@@ -18,7 +18,7 @@ export class Task {
     recipients:string[] = [""];
     from = "";
     constructor (options:ITask) {
-        Object.keys(options).forEach(function (key:string) {
+        Object.keys(options).forEach((key:string) => {
             if (this.hasOwnProperty(key)) {
                 this[key] = options[key];
             }

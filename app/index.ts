@@ -1,7 +1,9 @@
 "use strict";
-declare var angular: any;
-import { ITask, Task } from "./Components/Task/task.models";
+import * as angular from "angular";
+import { Task } from "./Components/Task/task.models";
 import { TaskSchedulerComponent } from "./Components/TaskScheduler/task-scheduler.component";
+import { TaskListComponent } from "./Components/TaskList/task-list.component";
+import { TaskComponent } from "./Components/Task/task.component";
 var users: { [empId: number]: string } = {
   4114: "mhodges",
   4110: "rhodges"
@@ -92,11 +94,10 @@ var tasks: Task[] = [
     recurrence: "daily"
   })
 ];
-
 angular.module("myApp", [])
   .service("taskService", function ($q: ng.IQService, $timeout: ng.ITimeoutService) {
-    var svc: = {
-      getTasksForUser: function (userId: (string | number)):angular.IPromise<{}> {
+    var svc: {[serviceName: string]: any} = {
+      getTasksForUser: function (userId: (string | number)):ng.IPromise<{}> {
         return $q((resolve, reject_ignored) => {
           $timeout(function () {
             resolve(tasks.filter(function (task:Task) {

@@ -1,8 +1,8 @@
 /// <binding />
 var path = require('path');
 var resolve = path.resolve;
-var WebpackNotifierPlugin = require("webpack-notifier");
-var AssetsPlugin = require('assets-webpack-plugin');
+//var WebpackNotifierPlugin = require("webpack-notifier");
+//var AssetsPlugin = require('assets-webpack-plugin');
 var WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 'use strict';
 
@@ -20,7 +20,7 @@ var babelOptions = {
 
 module.exports = [{
     cache: true,
-    context: "./app",
+    context: resolve("app"),
     devtool: "source-map",
     entry: {
         index: './index.ts'

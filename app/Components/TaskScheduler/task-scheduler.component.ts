@@ -24,9 +24,9 @@ function taskSchedulerCtrl($http:ng.IHttpService, $scope:ng.IScope, taskService:
     };
 }
 
-function TaskSchedulerComponent() {
-    this.controller = taskSchedulerCtrl;
-    this.template = `
+export class TaskSchedulerComponent {
+    controller = taskSchedulerCtrl;
+    template = `
         <h1>{{$ctrl.message}}</h1>
         User Id: <input ng-model="$ctrl.userId" /> <button ng-click="$ctrl.getTasks();">Get Tasks</button><br/>
         <div ng-if="$ctrl.userTasks.length">

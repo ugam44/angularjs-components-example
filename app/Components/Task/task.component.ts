@@ -1,3 +1,4 @@
+import { copy } from "angular";
 export class TaskComponent {
     template = `
         <div class="task-container" ng-class="{'task-under-edit': $ctrl.underEdit}">
@@ -30,7 +31,7 @@ export class TaskComponent {
       var lastTask = null;
         this.$onInit = function () {
           this.underEdit = false;
-        lastTask = angular.copy(this.task);
+        lastTask = copy(this.task);
       };
       this.editTask = function () {
           this.underEdit = true;
@@ -57,8 +58,8 @@ export class TaskComponent {
       };
       this.$onChanges = function(changes) {
         if (changes.task) {
-          this.task = angular.copy(this.task);
-          lastTask = angular.copy(this.task);
+          this.task = copy(this.task);
+          lastTask = copy(this.task);
         }
       };
     };
