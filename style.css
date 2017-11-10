@@ -1,0 +1,17 @@
+.task-container {
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    margin: 5px 0;
+    background-color: whitesmoke;
+    position: relative;
+    max-width: 400px;
+  }
+  .task-container:not(.task-under-edit):hover {
+    background-color: #afafaf;
+  }
+  .task-actions {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
