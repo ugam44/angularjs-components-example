@@ -95,7 +95,7 @@ var tasks: Task[] = [
   })
 ];
 angular.module("myApp", [])
-  .service("taskService", function ($q: ng.IQService, $timeout: ng.ITimeoutService) {
+  .service("taskService", ["$q", "$timeout", function ($q: ng.IQService, $timeout: ng.ITimeoutService) {
     var svc: {[serviceName: string]: any} = {
       getTasksForUser: function (userId: (string | number)):ng.IPromise<{}> {
         return $q((resolve, reject_ignored) => {
@@ -108,7 +108,7 @@ angular.module("myApp", [])
       }
     };
     return svc;
-  })
+  }])
   .component("taskScheduler", new TaskSchedulerComponent())
   .component("taskList", new TaskListComponent())
   .component("task", new TaskComponent());

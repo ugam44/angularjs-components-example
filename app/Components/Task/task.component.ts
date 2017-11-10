@@ -1,4 +1,5 @@
 import { copy } from "angular";
+import { Task } from "./task.models";
 export class TaskComponent {
     template = `
         <div class="task-container" ng-class="{'task-under-edit': $ctrl.underEdit}">
@@ -23,44 +24,44 @@ export class TaskComponent {
         </div>
     `;
     bindings = {
-      task: "<",
-      onUpdate: "&",
-      onRemove: "&"
+        task: "<",
+        onUpdate: "&",
+        onRemove: "&"
     };
-    controller = function() {
-      var lastTask = null;
+    controller = function () {
+        var lastTask:Task = null;
         this.$onInit = function () {
-          this.underEdit = false;
-        lastTask = copy(this.task);
-      };
-      this.editTask = function () {
-          this.underEdit = true;
-      };
-      this.saveTask = function () {
-        lastTask = this.task;
-        this.onUpdate({
-            $event: {
-              task: this.task
-          }
-        });
-        this.underEdit = false;
-      };
-      this.cancelEdit = function () {
-          this.task = lastTask;
-          this.underEdit = false;
-      };
-      this.removeTask = function () {
-          this.onRemove({
-            $event: {
-              taskId: this.task.id
-          }
-        });
-      };
-      this.$onChanges = function(changes) {
-        if (changes.task) {
-          this.task = copy(this.task);
-          lastTask = copy(this.task);
-        }
-      };
+            this.underEdit = false;
+            lastTask = copy(this.task);
+        };
+        this.editTask = function () {
+            this.underEdit = true;
+        };
+        this.saveTask = function () {
+            lastTask = this.task;
+            this.onUpdate({
+                $event: {
+                    task: this.task
+                }
+            });
+            this.underEdit = false;
+        };
+        this.cancelEdit = function () {
+            this.task = lastTask;
+            this.underEdit = false;
+        };
+        this.removeTask = function () {
+            this.onRemove({
+                $event: {
+                    taskId: this.task.id
+                }
+            });
+        };
+        this.$onChanges = function (changes) {
+            if (changes.task) {
+                this.task = copy(this.task);
+                lastTask = copy(this.task);
+            }
+        };
     };
-  }
+}
