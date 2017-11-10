@@ -1,4 +1,4 @@
-# Task Scheduler Demo!
+# AngularJS Components Demo!
 
 ### 1) Clone git repo:
 - ...\dir_name> `git clone https://github.com/ugam44/angularjs-components-example task-scheduler`
